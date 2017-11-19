@@ -11,7 +11,7 @@ namespace PDNBulkUpdater
 	public static class Util
 	{
 		public const string DEFAULT_OUTPUT_DIR_DATE_FMT = "yyyy.M.d";
-		public static readonly string DEFAULT_OUTPUT_DIR = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "PDNBulkUpdater\\" + DateTime.Now.ToString(DEFAULT_OUTPUT_DIR_DATE_FMT));
+		public static readonly string DEFAULT_OUTPUT_DIR = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "BulkActionForPaintDotNet\\" + DateTime.Now.ToString(DEFAULT_OUTPUT_DIR_DATE_FMT));
 		static readonly HashSet<char> m_invalidPathChars = new HashSet<char>(System.IO.Path.GetInvalidPathChars());
 
 		public static bool IsNumericDecimalKey(System.Windows.Input.Key key)
