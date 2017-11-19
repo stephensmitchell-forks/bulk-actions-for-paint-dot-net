@@ -66,7 +66,6 @@
     <Reference Include="PaintDotNet.SystemLayer">
       <HintPath>..\..\..\..\..\..\Program Files\paint.net\PaintDotNet.SystemLayer.dll</HintPath>
     </Reference>
-    <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
