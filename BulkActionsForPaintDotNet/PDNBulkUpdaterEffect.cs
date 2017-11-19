@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Reflection;
+using PDNBulkUpdater.ReflectionWrapper;
 
 namespace PaintDotNet.Effects
 {
@@ -105,7 +106,7 @@ namespace PaintDotNet.Effects
 				}
 				catch(Exception ex)
 				{
-					PaintDotNet.Utility.ErrorBox(m_mainWindow, ex.ToString());
+                    PDNUtilities.ErrorBox(m_mainWindow, ex.ToString());
 
 					if(window.IsVisible)
 					{
@@ -115,7 +116,7 @@ namespace PaintDotNet.Effects
 			}
 			catch(Exception ex)
 			{
-				PaintDotNet.Utility.ErrorBox(m_mainWindow, ex.ToString());
+                PDNUtilities.ErrorBox(m_mainWindow, ex.ToString());
 			}
 		}
 

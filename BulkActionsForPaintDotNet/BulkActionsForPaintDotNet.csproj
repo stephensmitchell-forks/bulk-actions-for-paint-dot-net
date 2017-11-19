@@ -63,6 +63,9 @@
     <Reference Include="PaintDotNet.Effects">
       <HintPath>..\..\..\..\..\..\Program Files\paint.net\PaintDotNet.Effects.dll</HintPath>
     </Reference>
+    <Reference Include="PaintDotNet.SystemLayer">
+      <HintPath>..\..\..\..\..\..\Program Files\paint.net\PaintDotNet.SystemLayer.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -158,6 +161,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ReflectionWrapper\PDNFileTypeCollection.cs" />
+    <Compile Include="ReflectionWrapper\PDNUtilities.cs" />
     <Compile Include="SaveTokenPage.xaml.cs">
       <DependentUpon>SaveTokenPage.xaml</DependentUpon>
     </Compile>
