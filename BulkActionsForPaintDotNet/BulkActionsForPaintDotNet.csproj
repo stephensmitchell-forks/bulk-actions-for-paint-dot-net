@@ -90,10 +90,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DonatePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ImageResizePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -127,9 +123,6 @@
       <DependentUpon>BulkUpdateWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="CommandLine.cs" />
-    <Compile Include="DonatePage.xaml.cs">
-      <DependentUpon>DonatePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="FileSystemDirectory.cs" />
     <Compile Include="FileSystemFile.cs" />
     <Compile Include="FileSystemItem.cs" />
