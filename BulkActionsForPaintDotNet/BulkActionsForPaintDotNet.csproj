@@ -46,20 +46,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PaintDotNet">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Paint.NET\PaintDotNet.exe</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\paint.net\PaintDotNet.exe</HintPath>
     </Reference>
     <Reference Include="PaintDotNet.Base">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Paint.NET\PaintDotNet.Base.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\paint.net\PaintDotNet.Base.dll</HintPath>
     </Reference>
     <Reference Include="PaintDotNet.Core">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Paint.NET\PaintDotNet.Core.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\paint.net\PaintDotNet.Core.dll</HintPath>
     </Reference>
-    <Reference Include="PaintDotNet.Data, Version=3.55.3767.28613, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Program Files\Paint.NET\PaintDotNet.Data.dll</HintPath>
+    <Reference Include="PaintDotNet.Data">
+      <HintPath>..\..\..\..\..\..\Program Files\paint.net\PaintDotNet.Data.dll</HintPath>
     </Reference>
     <Reference Include="PaintDotNet.Effects">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Paint.NET\PaintDotNet.Effects.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\paint.net\PaintDotNet.Effects.dll</HintPath>
     </Reference>
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
