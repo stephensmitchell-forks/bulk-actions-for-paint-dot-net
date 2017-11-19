@@ -1,0 +1,63 @@
+﻿<Page x:Class="PDNBulkUpdater.AddItemsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+	Title="Add Items">
+
+	<Page.Resources>
+		<ResourceDictionary Source="Themes\Default.xaml"/>
+	</Page.Resources>
+
+	<DockPanel LastChildFill="True">
+		<Border DockPanel.Dock="Top" Style="{StaticResource PageHeaderBorder}">
+			<TextBlock Style="{StaticResource PageHeader}">Add Items to Update</TextBlock>
+		</Border>
+		<StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+			<Button Width="50" Margin="10,10,0,10" Click="OnBackButton_Click" TabIndex="1">Back</Button>
+			<Button Width="50" Click="OnNextButton_Click" Margin="10" TabIndex="0" IsDefault="True">Next</Button>
+		</StackPanel>
+		<Grid Margin="10,0,10,0">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+			<Grid Margin="0,10,0,10">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+				</Grid.RowDefinitions>
+				<Label>Output Directory:</Label>
+				<TextBox Name="m_txtOutputDir" Grid.Column="1" HorizontalAlignment="Stretch" ToolTipOpening="OnPath_ToolTipOpening" ToolTip="Output Directory" LostFocus="OnValidateTxtBox_LostFocus" Style="{StaticResource ValidatedTextBox}"/>
+				<Button Grid.Column="2" HorizontalAlignment="Right" Margin="10,0,0,0" Width="50" Click="OnBrowseButton_Click">Browse</Button>
+				
+				<Label Grid.Row="1" Margin="0,5">Rename Files To:</Label>
+				<TextBox Name="m_txtRenameFiles" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" ToolTipOpening="OnPath_ToolTipOpening" ToolTip="Rename Files" LostFocus="OnValidateTxtBox_LostFocus" Style="{StaticResource ValidatedTextBox}"/> 
+				
+				<Label Grid.Row="2">Output File Type:</Label>
+				<ComboBox Name="m_comboFileType" Width="150" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" SelectionChanged="OnComboFileType_SelectionChanged"/>
+			</Grid>
+			<ListView Name="m_viewItems" Grid.Row="1" KeyDown="OnViewItems_KeyDown" ToolTip="0 File(s)" ToolTipOpening="OnViewItems_ToolTipOpening">
+				<ListView.View>
+					<GridView>
+						<GridViewColumn Width="500" Header="Path"/>
+					</GridView>
+				</ListView.View>
+			</ListView>
+			<StackPanel Grid.Row="2" Orientation="Horizontal">
+				<Button Margin="0,10,10,0" Click="OnAddImagesButton_Click" Padding="5,0">Add Images</Button>
+				<Button Margin="0,10,10,0" Click="OnAddFolderButton_Click" Padding="5,0">Add Folder</Button>
+				<Button Margin="0,10,10,0" Click="OnClearButton_Click" Padding="5,0" Width="50">Clear</Button>
+			</StackPanel>
+		</Grid>
+	</DockPanel>
+</Page>

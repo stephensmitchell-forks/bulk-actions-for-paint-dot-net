@@ -1,0 +1,22 @@
+﻿<Page x:Class="PDNBulkUpdater.DonatePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+	Title="Donate">
+
+    <Page.Resources>
+        <ResourceDictionary Source="Themes\Default.xaml"/>
+    </Page.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Frame Name="m_frame" Source="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=ZKDVQXFNMT6V8&amp;lc=US&amp;item_name=Paint%2eNET%20Bulk%20Image%20Processor&amp;currency_code=USD&amp;bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted" NavigationUIVisibility="Visible" Navigated="OnFrame_Navigated" NavigationFailed="OnFrame_NavigationFailed"/>
+        <Button Name="m_btnNext" Grid.Row="1" Width="50" IsEnabled="False" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Click="OnNextButton_Click">Next</Button>
+    </Grid>
+</Page>

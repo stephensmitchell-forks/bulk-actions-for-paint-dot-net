@@ -1,0 +1,26 @@
+﻿<Page x:Class="PDNBulkUpdater.SaveTokenPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+	Title="SaveTokenPage">
+
+	<Page.Resources>
+		<ResourceDictionary Source="Themes\Default.xaml"/>
+	</Page.Resources>
+
+	<DockPanel LastChildFill="True">
+		<Border DockPanel.Dock="Top" Style="{StaticResource PageHeaderBorder}">
+			<TextBlock Name="m_tbTitle" Style="{StaticResource PageHeader}">Save Token</TextBlock>
+		</Border>
+		<StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+			<Button Width="50" Margin="10,10,0,10" Click="OnBackButton_Click" TabIndex="1">Back</Button>
+			<Button Width="50" Click="OnNextButton_Click" Margin="10" TabIndex="0" IsDefault="True">Next</Button>
+		</StackPanel>
+		<Grid Style="{StaticResource PageInfoGrid}">
+			<WindowsFormsHost HorizontalAlignment="Stretch" Name="m_host" VerticalAlignment="Stretch" Margin="5,0,0,0"/>
+		</Grid>
+	</DockPanel>
+</Page>
