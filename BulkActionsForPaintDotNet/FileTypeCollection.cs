@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PDNBulkUpdater.ReflectionWrapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,9 +8,9 @@ namespace PDNBulkUpdater
 {
 	public class FileTypeCollection : IEnumerable<PaintDotNet.FileType>
 	{
-		PaintDotNet.FileTypeCollection m_collection;
+        PDNFileTypeCollection m_collection;
 
-		public FileTypeCollection(PaintDotNet.FileTypeCollection collection)
+		public FileTypeCollection(PDNFileTypeCollection collection)
 		{
 			if(collection == null)
 			{
@@ -20,7 +21,7 @@ namespace PDNBulkUpdater
 		}
 
 		public FileTypeCollection(IEnumerable<PaintDotNet.FileType> fileTypes)
-			: this(new PaintDotNet.FileTypeCollection(fileTypes))
+			: this(new PDNFileTypeCollection(fileTypes))
 		{
 		}
 
@@ -46,7 +47,7 @@ namespace PDNBulkUpdater
 
 		public static PaintDotNet.FileType[] FilterFileTypeList(PaintDotNet.FileType[] input, bool excludeCantSave, bool excludeCantLoad)
 		{
-			return PaintDotNet.FileTypeCollection.FilterFileTypeList(input, excludeCantSave, excludeCantLoad);
+			return PDNFileTypeCollection.FilterFileTypeList(input, excludeCantSave, excludeCantLoad);
 		}
 
 		public int IndexOfExtension(string findMeExt)

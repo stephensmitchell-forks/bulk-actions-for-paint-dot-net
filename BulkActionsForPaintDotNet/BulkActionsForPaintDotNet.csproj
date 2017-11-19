@@ -157,6 +157,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ReflectionWrapper\PDNFileTypeCollection.cs" />
     <Compile Include="SaveTokenPage.xaml.cs">
       <DependentUpon>SaveTokenPage.xaml</DependentUpon>
     </Compile>
