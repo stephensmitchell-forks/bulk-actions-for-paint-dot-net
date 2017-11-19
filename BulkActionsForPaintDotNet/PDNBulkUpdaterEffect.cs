@@ -74,7 +74,15 @@ namespace PDNBulkUpdater
 			try
 			{
 				System.Windows.Forms.ToolStripMenuItem fileItem = sender as System.Windows.Forms.ToolStripMenuItem;
-				Type pdnMenuItemType = fileItem.DropDownItems[0].GetType();
+                
+                // Prevent duplicate menu items
+                foreach (System.Windows.Forms.ToolStripItem toolStripItem in fileItem.DropDownItems)
+                {
+                    if (string.Equals(toolStripItem.Text, MENU_TXT, StringComparison.InvariantCultureIgnoreCase))
+                        return;
+                }
+
+                Type pdnMenuItemType = fileItem.DropDownItems[0].GetType();
 				System.Windows.Forms.ToolStripMenuItem menuItem = pdnMenuItemType.Assembly.CreateInstance(pdnMenuItemType.FullName) as System.Windows.Forms.ToolStripMenuItem;
 
 				if(menuItem != null)
