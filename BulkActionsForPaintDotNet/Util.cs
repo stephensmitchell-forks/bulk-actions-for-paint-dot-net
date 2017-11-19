@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using PDNBulkUpdater.ReflectionWrapper;
 
 namespace PDNBulkUpdater
 {
@@ -86,7 +87,7 @@ namespace PDNBulkUpdater
 				Type ftypes = typeof(PaintDotNet.ClipboardUtil).Assembly.GetType("PaintDotNet.FileTypes", true, true);
 				MethodInfo info = ftypes.GetMethod("GetFileTypes");
 
-				collection = new FileTypeCollection(info.Invoke(null, new object[0]) as PaintDotNet.FileTypeCollection);
+				collection = new FileTypeCollection(new PDNFileTypeCollection(info.Invoke(null, new object[0])));
 			}
 			finally
 			{
