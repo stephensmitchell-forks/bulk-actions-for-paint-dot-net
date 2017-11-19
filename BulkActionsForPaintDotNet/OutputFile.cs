@@ -70,6 +70,7 @@ namespace PDNBulkUpdater
 				newDoc = doc = srcFileType.Load(file);
 			}
 
+            // Image resize
 			int newWidth = ctx.NewWidthInPixels;
 			int newHeight = ctx.NewHeightInPixels;
 
