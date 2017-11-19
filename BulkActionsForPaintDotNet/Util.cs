@@ -155,29 +155,47 @@ namespace PDNBulkUpdater
 				new object[0]);
 		}
 
-		public static PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> CreateParallelRenderer(PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> renderer, int tileEdge, int maxParallelism)
+		public static PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> CreateParallelRenderer(PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> renderer, PaintDotNet.Rendering.TilingStrategy tilingStrategy, int tileEdge, PaintDotNet.Threading.WorkItemQueuePriority workItemQueuePriority)
 		{
-			return (PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>)GetAssemblyPaintDotNetCore().CreateInstance(
-				"PaintDotNet.Rendering.ParallelizeRendererBgra",
-				false,
-				BindingFlags.CreateInstance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance,
-				null, new object[] { renderer, tileEdge, maxParallelism },
-				null,
-				new object[0]);
-		}
+            Type genericType = GetAssemblyPaintDotNetCore().GetType("PaintDotNet.Rendering.ParallelizeRenderer`1");
+            Type concreteType = genericType.MakeGenericType(typeof(PaintDotNet.ColorBgra));
+
+            PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> outRenderer = (PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>)
+                GetAssemblyPaintDotNetCore().CreateInstance(
+                    concreteType.FullName,
+                    false,
+				    BindingFlags.CreateInstance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance,
+				    null, new object[] { renderer, tilingStrategy, tileEdge, workItemQueuePriority },
+				    null,
+				    new object[0]);
+
+            if (outRenderer == null)
+                throw new NullReferenceException("outRenderer");
+
+            return outRenderer;
+        }
 
 		public static PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> CreateTileizeRenderer(PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> renderer, PaintDotNet.Rendering.SizeInt32 size)
 		{
-			return (PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>)GetAssemblyPaintDotNetCore().CreateInstance(
-				"PaintDotNet.Rendering.TileizeRendererBgra",
-				false,
-				BindingFlags.CreateInstance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance,
-				null, new object[] { renderer, size },
-				null,
-				new object[0]);
-		}
+            Type genericType = GetAssemblyPaintDotNetCore().GetType("PaintDotNet.Rendering.TileizeRenderer`1");
+            Type concreteType = genericType.MakeGenericType(typeof(PaintDotNet.ColorBgra));
 
-		public static int PrintToPixel(double dpu, double print)
+            PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> outRenderer = (PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>)
+                GetAssemblyPaintDotNetCore().CreateInstance(
+                    concreteType.FullName,
+				    false,
+				    BindingFlags.CreateInstance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance,
+				    null, new object[] { renderer, size },
+				    null,
+				    new object[0]);
+
+            if (outRenderer == null)
+                throw new NullReferenceException("outRenderer");
+
+            return outRenderer;
+        }
+
+        public static int PrintToPixel(double dpu, double print)
 		{
 			return (int)Math.Round(print * dpu, MidpointRounding.AwayFromZero);
 		}

@@ -134,7 +134,9 @@ namespace PDNBulkUpdater
 					}
 
 					PaintDotNet.Rendering.ObservableRenderer<PaintDotNet.ColorBgra> observableRenderer = new PaintDotNet.Rendering.ObservableRenderer<PaintDotNet.ColorBgra>(renderer);
-					PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> parallelRenderer = Environment.ProcessorCount > 1 ? Util.CreateParallelRenderer(observableRenderer, 7, 0) : Util.CreateTileizeRenderer(renderer, new PaintDotNet.Rendering.SizeInt32(1 << 7, 1 << 7));
+					PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> parallelRenderer = Environment.ProcessorCount > 1 ? 
+                        Util.CreateParallelRenderer(observableRenderer, PaintDotNet.Rendering.TilingStrategy.Tiles, 7, PaintDotNet.Threading.WorkItemQueuePriority.High) : 
+                        Util.CreateTileizeRenderer(renderer, new PaintDotNet.Rendering.SizeInt32(1 << 7, 1 << 7));
 
 					PaintDotNet.Surface newSurface = new PaintDotNet.Surface(newWidth, newHeight);
 					parallelRenderer.Render(newSurface, new PaintDotNet.Rendering.PointInt32(0, 0));
