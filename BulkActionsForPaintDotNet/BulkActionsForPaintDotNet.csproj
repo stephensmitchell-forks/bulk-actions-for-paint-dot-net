@@ -8,8 +8,8 @@
     <ProjectGuid>{8B74E3E2-13F5-46E7-8B21-9935A4B11BA9}</ProjectGuid>
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PDNBulkUpdater</RootNamespace>
-    <AssemblyName>PDNBulkUpdater</AssemblyName>
+    <RootNamespace>BulkActionsForPaintDotNet</RootNamespace>
+    <AssemblyName>BulkActionsForPaintDotNet</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
