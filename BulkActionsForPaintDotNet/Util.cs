@@ -83,8 +83,9 @@ namespace PDNBulkUpdater
 			FileTypeCollection collection = null;
 
 			try
-			{
-				Type ftypes = Type.GetType("PaintDotNet.ClipboardUtil").Assembly.GetType("PaintDotNet.FileTypes", true, true);
+			{                
+                Type mainAssemblyType = typeof(PaintDotNet.Rendering.Matrix3x2DoubleExtensions);
+                Type ftypes = mainAssemblyType.Assembly.GetType("PaintDotNet.Data.FileTypes", true, true);
 				MethodInfo info = ftypes.GetMethod("GetFileTypes");
 
 				collection = new FileTypeCollection(new PDNFileTypeCollection(info.Invoke(null, new object[0])));
