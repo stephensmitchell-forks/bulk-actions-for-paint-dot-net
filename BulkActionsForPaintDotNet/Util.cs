@@ -151,7 +151,7 @@ namespace PDNBulkUpdater
 				new object[0]);
 		}
 
-		public static PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> CreateTileizeRenderer(PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> renderer, PaintDotNet.Rendering.Int32Size size)
+		public static PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> CreateTileizeRenderer(PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> renderer, PaintDotNet.Rendering.SizeInt32 size)
 		{
 			return (PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>)typeof(PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>).Assembly.CreateInstance(
 				"PaintDotNet.Rendering.TileizeRendererBgra",
