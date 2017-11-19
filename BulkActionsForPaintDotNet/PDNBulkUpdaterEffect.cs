@@ -5,7 +5,7 @@ using System.Text;
 using System.Reflection;
 using PDNBulkUpdater.ReflectionWrapper;
 
-namespace PaintDotNet.Effects
+namespace PDNBulkUpdater
 {
 	public class PDNBulkUpdaterEffect : PaintDotNet.Effects.Effect
 	{
@@ -50,7 +50,8 @@ namespace PaintDotNet.Effects
 
 									if(menu != null)
 									{
-										System.Windows.Forms.ToolStripMenuItem fileItem = menu.Items[0] as System.Windows.Forms.ToolStripMenuItem;
+                                        // "Edit" drop down menu
+										System.Windows.Forms.ToolStripMenuItem fileItem = menu.Items[1] as System.Windows.Forms.ToolStripMenuItem;
 										fileItem.DropDownOpening += new EventHandler(fileItem_DropDownOpening);
 									}
 								}
@@ -81,8 +82,8 @@ namespace PaintDotNet.Effects
 					menuItem.Text = MENU_TXT;
 					menuItem.Click += new EventHandler(OnBulkConvertClick);
 
-					fileItem.DropDownItems.Insert(fileItem.DropDownItems.Count - 1, menuItem);
-					fileItem.DropDownItems.Insert(fileItem.DropDownItems.Count - 1, new System.Windows.Forms.ToolStripSeparator());
+                    fileItem.DropDownItems.Insert(fileItem.DropDownItems.Count, new System.Windows.Forms.ToolStripSeparator());
+                    fileItem.DropDownItems.Insert(fileItem.DropDownItems.Count, menuItem);
 				}
 			}
 			catch(Exception ex)
@@ -96,7 +97,7 @@ namespace PaintDotNet.Effects
 		{
 			try
 			{
-				PDNBulkUpdater.BulkUpdateWindow window = new PDNBulkUpdater.BulkUpdateWindow();
+                PDNBulkUpdater.BulkUpdateWindow window = new PDNBulkUpdater.BulkUpdateWindow();
 				System.Windows.Interop.WindowInteropHelper hlpr = new System.Windows.Interop.WindowInteropHelper(window);
 				hlpr.Owner = m_mainWindow == null ? IntPtr.Zero : m_mainWindow.Handle;
 
@@ -121,7 +122,7 @@ namespace PaintDotNet.Effects
 		}
 
 		public PDNBulkUpdaterEffect()
-			: base("Bulk Updater", null, EffectFlags.None)
+			: base("Bulk Updater", null, PaintDotNet.Effects.EffectFlags.None)
 		{
 			if(m_loaderException == null)
 			{
@@ -134,7 +135,7 @@ namespace PaintDotNet.Effects
 			}
 		}
 
-		public override void Render(EffectConfigToken parameters, PaintDotNet.RenderArgs dstArgs, PaintDotNet.RenderArgs srcArgs, System.Drawing.Rectangle[] rois, int startIndex, int length)
+		public override void Render(PaintDotNet.Effects.EffectConfigToken parameters, PaintDotNet.RenderArgs dstArgs, PaintDotNet.RenderArgs srcArgs, System.Drawing.Rectangle[] rois, int startIndex, int length)
 		{
 			if(m_loaderException == null)
 			{
