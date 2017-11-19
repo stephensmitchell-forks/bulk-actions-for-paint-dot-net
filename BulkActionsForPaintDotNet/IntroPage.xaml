@@ -16,16 +16,17 @@
             <TextBlock Style="{StaticResource PageHeader}">Bulk Image Processing</TextBlock>
 		</Border>
 		<StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Image Source="Images\btn_donate_LG.gif"  Stretch="None" Cursor="Hand" MouseLeftButtonDown="OnDonateImage_MouseLeftButtonDown"/>
-			<Button Width="50" Click="OnNextButton_Click" Margin="10" TabIndex="0" IsDefault="True">Next</Button>
+            <Button Width="50" Click="OnNextButton_Click" Margin="10" TabIndex="0" IsDefault="True">Next</Button>
 		</StackPanel>
 		<Grid Style="{StaticResource PageInfoGrid}">
 			<TextBlock Style="{StaticResource PageInfo}">
-				Version 1.0<LineBreak/>
+				Version 0.1<LineBreak/>
 				<LineBreak/>
-				Welcome to the Paint .NET Bulk Image Processor!
+				Welcome to the Bulk Actions for Paint .NET.
+                <LineBreak/>
+                <LineBreak/>
                 This plugin allows you to modify multiple images at the same time.
-                Please visit us at <Hyperlink Name="m_hyperlink" NavigateUri="http://pdnbulkupdater.codeplex.com">http://pdnbulkupdater.codeplex.com</Hyperlink> to check for the latest updates.
+                Please visit us at <Hyperlink Name="m_hyperlink" NavigateUri="https://github.com/sagishporer/bulk-actions-for-paint-dot-net">https://github.com/sagishporer/bulk-actions-for-paint-dot-net</Hyperlink> to check for the latest updates.
                 <LineBreak/>
                 <LineBreak/>
                 Click Next to continue.
