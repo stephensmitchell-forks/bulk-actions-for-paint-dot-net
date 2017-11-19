@@ -83,9 +83,8 @@ namespace PDNBulkUpdater
 			FileTypeCollection collection = null;
 
 			try
-			{                
-                Type mainAssemblyType = typeof(PaintDotNet.Rendering.Matrix3x2DoubleExtensions);
-                Type ftypes = mainAssemblyType.Assembly.GetType("PaintDotNet.Data.FileTypes", true, true);
+			{                                
+                Type ftypes = GetAssemblyPaintDotNet().GetType("PaintDotNet.Data.FileTypes", true, true);
 				MethodInfo info = ftypes.GetMethod("GetFileTypes");
 
 				collection = new FileTypeCollection(new PDNFileTypeCollection(info.Invoke(null, new object[0])));
@@ -98,9 +97,23 @@ namespace PDNBulkUpdater
 			return collection;
 		}
 
+        private static Assembly GetAssemblyPaintDotNet()
+        {
+            Type mainAssemblyType = typeof(PaintDotNet.Rendering.Matrix3x2DoubleExtensions);
+
+            return mainAssemblyType.Assembly;
+        }
+
+        public static Assembly GetAssemblyPaintDotNetCore()
+        {
+            Type coreAssemblyType = typeof(PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>);
+
+            return coreAssemblyType.Assembly;
+        }
+
 		public static PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> CreateResizeBicubic(PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> source, int width, int height)
 		{
-			return (PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>)typeof(PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>).Assembly.CreateInstance(
+			return (PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>)GetAssemblyPaintDotNetCore().CreateInstance(
 				"PaintDotNet.Rendering.ResizeBicubicRendererBgra",
 				false,
 				BindingFlags.CreateInstance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance,
@@ -111,7 +124,7 @@ namespace PDNBulkUpdater
 
 		public static PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> CreateResizeBilinear(PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> source, int width, int height)
 		{
-			return (PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>)typeof(PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>).Assembly.CreateInstance(
+			return (PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>)GetAssemblyPaintDotNetCore().CreateInstance(
 				"PaintDotNet.Rendering.ResizeBilinearRendererBgra",
 				false,
 				BindingFlags.CreateInstance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance,
@@ -122,7 +135,7 @@ namespace PDNBulkUpdater
 
 		public static PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> CreateResizeNearestNeighbor(PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> source, int width, int height)
 		{
-			return (PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>)typeof(PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>).Assembly.CreateInstance(
+			return (PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>)GetAssemblyPaintDotNetCore().CreateInstance(
 				"PaintDotNet.Rendering.ResizeNearestNeighborRendererBgra",
 				false,
 				BindingFlags.CreateInstance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance,
@@ -133,7 +146,7 @@ namespace PDNBulkUpdater
 
 		public static PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> CreateResizeSuperSampling(PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> source, int width, int height)
 		{
-			return (PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>)typeof(PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>).Assembly.CreateInstance(
+			return (PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>)GetAssemblyPaintDotNetCore().CreateInstance(
 				"PaintDotNet.Rendering.ResizeSuperSamplingRendererBgra",
 				false,
 				BindingFlags.CreateInstance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance,
@@ -144,7 +157,7 @@ namespace PDNBulkUpdater
 
 		public static PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> CreateParallelRenderer(PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> renderer, int tileEdge, int maxParallelism)
 		{
-			return (PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>)typeof(PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>).Assembly.CreateInstance(
+			return (PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>)GetAssemblyPaintDotNetCore().CreateInstance(
 				"PaintDotNet.Rendering.ParallelizeRendererBgra",
 				false,
 				BindingFlags.CreateInstance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance,
@@ -155,7 +168,7 @@ namespace PDNBulkUpdater
 
 		public static PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> CreateTileizeRenderer(PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> renderer, PaintDotNet.Rendering.SizeInt32 size)
 		{
-			return (PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>)typeof(PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>).Assembly.CreateInstance(
+			return (PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>)GetAssemblyPaintDotNetCore().CreateInstance(
 				"PaintDotNet.Rendering.TileizeRendererBgra",
 				false,
 				BindingFlags.CreateInstance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance,
