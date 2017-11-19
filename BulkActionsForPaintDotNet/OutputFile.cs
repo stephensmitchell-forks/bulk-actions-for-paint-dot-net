@@ -91,7 +91,7 @@ namespace PDNBulkUpdater
 			if(doc.Width != newWidth || doc.Height != newHeight)
 			{
 				newDoc = new PaintDotNet.Document(newWidth, newHeight);
-				newDoc.ReplaceMetaDataFrom(doc);
+				newDoc.ReplaceMetadataFrom(doc);
 				newDoc.DpuUnit = ctx.DpuUnit;
 				newDoc.DpuX = ctx.Dpu;
 				newDoc.DpuY = ctx.Dpu;
