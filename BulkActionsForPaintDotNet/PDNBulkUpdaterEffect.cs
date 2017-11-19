@@ -9,7 +9,7 @@ namespace PDNBulkUpdater
 {
 	public class PDNBulkUpdaterEffect : PaintDotNet.Effects.Effect
 	{
-		const string MENU_TXT = "Bulk Processing...";
+		const string MENU_TXT = "Bulk Actions...";
 
 		static System.Windows.Forms.Form m_mainWindow;
 		static Exception m_loaderException = null;
