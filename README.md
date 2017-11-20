@@ -1,5 +1,6 @@
 # Bulk Actions plugin for Paint.NET
 Plug-in for performing bulk (batch) actions on images.
+
 Latest release can be found here:
 https://github.com/sagishporer/bulk-actions-for-paint-dot-net/releases
 
