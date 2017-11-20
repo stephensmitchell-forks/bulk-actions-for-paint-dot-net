@@ -1,0 +1,60 @@
+﻿<Page x:Class="BulkActionsForPaintDotNet.CanvasResizePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="568" d:DesignWidth="400"
+	Title="Canvas Size">
+
+    <Page.Resources>
+        <ResourceDictionary Source="Themes\Default.xaml"/>
+    </Page.Resources>
+
+    <DockPanel LastChildFill="True">
+        <Border DockPanel.Dock="Top" Style="{StaticResource PageHeaderBorder}">
+            <TextBlock Style="{StaticResource PageHeader}">Canvas Size</TextBlock>
+        </Border>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Width="50" Margin="10,10,0,10" Click="OnBackButton_Click" TabIndex="1">Back</Button>
+            <Button Width="50" Margin="10" Click="OnNextButton_Click" TabIndex="0" IsDefault="True">Next</Button>
+        </StackPanel>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="10,10,10,0" Background="White">
+            <Canvas Width="300" Height="350" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <RadioButton Canvas.Left="13" Canvas.Top="10" Content="By Percentage:" Height="16" Name="m_radioByPercentage" IsChecked="True" Checked="OnByPercentage_CheckedChanged" Unchecked="OnByPercentage_CheckedChanged" TabIndex="3"/>
+                <RadioButton Canvas.Left="13" Canvas.Top="39" Content="By Absolute Size:" Height="16" Name="m_radioByAbsSize" Checked="OnByAbsoluteSize_CheckedChanged" Unchecked="OnByAbsoluteSize_CheckedChanged" TabIndex="4"/>
+                <ComboBox Canvas.Left="134" Canvas.Top="324" Height="23" Name="m_comboAnchor" Width="160" TabIndex="2"/>
+                <TextBox Canvas.Left="134" Canvas.Top="9" Height="23" Name="m_txtPercentage" Width="63" TextAlignment="Right" Text="100" KeyDown="OnPercent_KeyDown" TabIndex="5" PreviewKeyDown="PreventSpace_PreviewKeyDown"/>
+                <Label Canvas.Left="25" Canvas.Top="61" Content="Pixel Size" Height="28"/>
+                <Rectangle Canvas.Left="90" Canvas.Top="75" Height="2" Fill="LightSteelBlue" Width="204" />
+                <Label Canvas.Left="42" Canvas.Top="95" Content="Width:" Height="28"/>
+                <Label Canvas.Left="42" Canvas.Top="129" Content="Height:" Height="28"/>
+                <TextBox Canvas.Left="134" Canvas.Top="97" Height="23" Name="m_txtPixelWidth" Width="63" Text="800" TextAlignment="Right" IsEnabled="False" KeyDown="OnPixelDim_KeyDown" TextChanged="OnPixelDim_TextChanged" TabIndex="6" PreviewKeyDown="PreventSpace_PreviewKeyDown" />
+                <TextBox Canvas.Left="134" Canvas.Top="131" Height="23" Name="m_txtPixelHeight" Width="63" Text="600" TextAlignment="Right" IsEnabled="False" KeyDown="OnPixelDim_KeyDown" TextChanged="OnPixelDim_TextChanged" TabIndex="7" PreviewKeyDown="PreventSpace_PreviewKeyDown" />
+                <Label Canvas.Left="42" Canvas.Top="163" Content="Resolution:" Height="28"/>
+                <TextBox Canvas.Left="134" Canvas.Top="165" Height="23" Name="m_txtPixelResolution" Width="63" Text="96" TextAlignment="Right" IsEnabled="False" KeyDown="OnPrintDim_KeyDown" TextChanged="OnPixelResolution_TextChanged" TabIndex="8" PreviewKeyDown="PreventSpace_PreviewKeyDown" />
+                <ComboBox Canvas.Left="204" Canvas.Top="165" Height="23" Name="m_comboPixelMeasurement" Width="90" SelectedIndex="0" IsEnabled="False" SelectionChanged="OnPixelMeasurement_SelectionChanged" TabIndex="9">
+                    <ComboBoxItem>pixels/inch</ComboBoxItem>
+                    <ComboBoxItem>pixels/cm</ComboBoxItem>
+                </ComboBox>
+                <Label Canvas.Left="25" Canvas.Top="197" Content="Print Size" Height="28" />
+                <Rectangle Canvas.Left="90" Canvas.Top="211" Fill="LightSteelBlue" Height="2" Width="204" />
+                <Label Canvas.Left="204" Canvas.Top="95" Content="pixels" Height="28"/>
+                <Label Canvas.Left="204" Canvas.Top="129" Content="pixels" Height="28"/>
+                <Label Canvas.Left="42" Canvas.Top="230" Content="Width:" Height="28"/>
+                <Label Canvas.Left="42" Canvas.Top="264" Content="Height:" Height="28"/>
+                <TextBox Canvas.Left="134" Canvas.Top="232" Height="23" Name="m_txtPrintWidth" Text="8.33" Width="63" TextAlignment="Right" IsEnabled="False" KeyDown="OnPrintDim_KeyDown" TextChanged="OnPrintDim_TextChanged" TabIndex="10" PreviewKeyDown="PreventSpace_PreviewKeyDown" />
+                <TextBox Canvas.Left="134" Canvas.Top="266" Height="23" Name="m_txtPrintHeight" Text="6.25" Width="63" TextAlignment="Right" IsEnabled="False" KeyDown="OnPrintDim_KeyDown" TextChanged="OnPrintDim_TextChanged" TabIndex="12" PreviewKeyDown="PreventSpace_PreviewKeyDown" />
+                <ComboBox Canvas.Left="204" Canvas.Top="232" Height="23" Name="m_comboPrintMeasurement" SelectedIndex="0" Width="90" IsEnabled="False" SelectionChanged="OnPrintMeasurement_SelectionChanged" TabIndex="11">
+                    <ComboBoxItem Content="inches" />
+                    <ComboBoxItem Content="centimeters" />
+                </ComboBox>
+                <Label Canvas.Left="204" Canvas.Top="264" Content="inches" Height="28" Name="m_lblPrintHeight" />
+                <Label Canvas.Left="198" Canvas.Top="8" Content="%" Height="28"/>
+                <Label Canvas.Left="30" Canvas.Top="292" Content="Anchor" Height="28"/>
+                <Rectangle Canvas.Left="90" Canvas.Top="306" Fill="LightSteelBlue" Height="2" Width="204" />
+            </Canvas>
+        </ScrollViewer>
+    </DockPanel>
+</Page>
+

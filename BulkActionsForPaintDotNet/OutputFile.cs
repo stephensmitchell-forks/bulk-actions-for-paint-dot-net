@@ -149,9 +149,17 @@ namespace PDNBulkUpdater
 				}
 			}
 
+            // Canvas resize
+            UpdateContext.CanvasResizeContext canvasResize = ctx.CanvasResize;
+            if (!((canvasResize.UsePercent == true)&&(canvasResize.Percent == 100)))
+            {
+                System.Drawing.Size newSize = canvasResize.GetNewSize(newDoc.Width, newDoc.Height);
+                newDoc = Util.CanvasResize(newDoc, newSize, canvasResize.Anchor, PaintDotNet.ColorBgra.White);
+            }
+
 			using(System.IO.FileStream file = System.IO.File.Create(this.DestinationPath))
 			{
-				using(PaintDotNet.Surface scratchSurface = new PaintDotNet.Surface(newWidth, newHeight))
+				using(PaintDotNet.Surface scratchSurface = new PaintDotNet.Surface(newDoc.Width, newDoc.Height))
 				{
 					destFileType.Save(newDoc, file, token, scratchSurface, null, false);
 				}

@@ -90,6 +90,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CanvasResizePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ImageResizePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -122,6 +126,9 @@
     <Compile Include="BulkUpdateWindow.xaml.cs">
       <DependentUpon>BulkUpdateWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CanvasResizePage.xaml.cs">
+      <DependentUpon>CanvasResizePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CommandLine.cs" />
     <Compile Include="FileSystemDirectory.cs" />
     <Compile Include="FileSystemFile.cs" />
@@ -152,6 +159,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ReflectionWrapper\PDNAnchorEdge.cs" />
     <Compile Include="ReflectionWrapper\PDNFileTypeCollection.cs" />
     <Compile Include="ReflectionWrapper\PDNUtilities.cs" />
     <Compile Include="SaveTokenPage.xaml.cs">

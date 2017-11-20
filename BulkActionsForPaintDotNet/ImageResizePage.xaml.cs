@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BulkActionsForPaintDotNet;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -99,18 +100,9 @@ namespace PDNBulkUpdater
 				m_ctx.DpuUnit = m_dpuUnit;
 			}
 
-			LinkedList<FileTypeSaveTokenPair> list = m_ctx.OutputFileType == null ? m_ctx.GetFileTypesUsedByFiles() : new LinkedList<FileTypeSaveTokenPair>(new FileTypeSaveTokenPair[] { new FileTypeSaveTokenPair(m_ctx.OutputFileType) });
-			PaintDotNet.PropertyBasedSaveConfigToken propTok = list.Count > 0 ? list.First.Value.SaveToken as PaintDotNet.PropertyBasedSaveConfigToken : null;
+            NavigationService.Navigate(new CanvasResizePage(m_ctx));
 
-			if(propTok != null && propTok.Properties.Count > 0)
-			{
-				NavigationService.Navigate(new SaveTokenPage(list.First, m_ctx));
-			}
-			else
-			{
-				NavigationService.Navigate(new UpdateItemsPage(list, m_ctx));
-			}
-		}
+        }
 
 		private void OnByAbsoluteSize_CheckedChanged(object sender, RoutedEventArgs e)
 		{

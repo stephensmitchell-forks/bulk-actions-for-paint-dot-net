@@ -111,6 +111,16 @@ namespace PDNBulkUpdater
             return coreAssemblyType.Assembly;
         }
 
+        public static PaintDotNet.Document CanvasResize(PaintDotNet.Document doc, System.Drawing.Size newSize, PDNAnchorEdge anchor, PaintDotNet.ColorBgra background)
+        {
+            Type canvasSizeActionType = GetAssemblyPaintDotNet().GetType("PaintDotNet.Actions.CanvasSizeAction");
+            object anchorEdge = PDNUtilities.PDNAnchorEdgeToAnchorEdge(anchor);
+
+            PaintDotNet.Document newDoc = (PaintDotNet.Document)canvasSizeActionType.GetMethod("ResizeDocument").Invoke(null, new object[] { doc, newSize, anchorEdge, background });
+
+            return newDoc;
+        }
+
 		public static PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> CreateResizeBicubic(PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra> source, int width, int height)
 		{
 			return (PaintDotNet.Rendering.IRenderer<PaintDotNet.ColorBgra>)GetAssemblyPaintDotNetCore().CreateInstance(
