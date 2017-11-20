@@ -97,7 +97,7 @@ namespace PDNBulkUpdater
 			return collection;
 		}
 
-        private static Assembly GetAssemblyPaintDotNet()
+        public static Assembly GetAssemblyPaintDotNet()
         {
             Type mainAssemblyType = typeof(PaintDotNet.Rendering.Matrix3x2DoubleExtensions);
 
