@@ -46,7 +46,7 @@
 				<Label Grid.Row="2">Output File Type:</Label>
 				<ComboBox Name="m_comboFileType" Width="150" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" SelectionChanged="OnComboFileType_SelectionChanged"/>
 			</Grid>
-			<ListView Name="m_viewItems" Grid.Row="1" KeyDown="OnViewItems_KeyDown" ToolTip="0 File(s)" ToolTipOpening="OnViewItems_ToolTipOpening">
+            <ListView Name="m_viewItems" Grid.Row="1" KeyDown="OnViewItems_KeyDown" ToolTip="0 File(s)" ToolTipOpening="OnViewItems_ToolTipOpening" AllowDrop="True" Drop="OnViewItems_Drop" DragOver="OnViewItems_DragOver">
 				<ListView.View>
 					<GridView>
 						<GridViewColumn Width="500" Header="Path"/>

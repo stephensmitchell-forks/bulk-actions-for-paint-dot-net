@@ -136,22 +136,51 @@ namespace PDNBulkUpdater
 				dlg.Title = "Images to Update";
 
 				if(dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-				{
-					foreach(string path in dlg.FileNames)
-					{
-						FileSystemFile file = new FileSystemFile(path, m_ctx.FileTypes);
-
-						if(!m_ctx.Files.Contains(file))
-						{
-							m_ctx.Files.Add(file);
-							m_viewItems.Items.Add(file);
-						}
-					}
-				}
+                    AddFilesToViewItemsList(dlg.FileNames);
 			}
 		}
 
-		private void OnAddFolderButton_Click(object sender, RoutedEventArgs e)
+        private void AddFilesToViewItemsList(string[] files)
+        {
+            foreach (string path in files)
+                AddFilesToViewItemsList(path);
+        }
+
+        private void AddFilesToViewItemsList(string path)
+        {
+            FileSystemItem file;
+            if (IsValidFileType(path, m_ctx.FileTypes) == false)
+                return;
+
+            if (System.IO.Directory.Exists(path))
+                file = new FileSystemDirectory(path, m_ctx.FileTypes);
+            else // File
+                file = new FileSystemFile(path, m_ctx.FileTypes);
+
+            if (!m_ctx.Files.Contains(file))
+            {
+                m_ctx.Files.Add(file);
+                m_viewItems.Items.Add(file);
+            }
+        }
+
+        private static bool IsValidFileType(string path, FileTypeCollection validFilesTypes)
+        {
+            if (String.IsNullOrEmpty(path))
+                return false;
+
+            if (System.IO.Directory.Exists(path))
+                return true;
+
+            for (int i = 0; i < validFilesTypes.Length; i++)
+                foreach (string ext in validFilesTypes[i].Extensions)
+                    if (path.EndsWith(ext, StringComparison.InvariantCultureIgnoreCase))
+                        return true;
+
+            return false;
+        }
+
+        private void OnAddFolderButton_Click(object sender, RoutedEventArgs e)
 		{
 			using(System.Windows.Forms.FolderBrowserDialog dlg = new System.Windows.Forms.FolderBrowserDialog())
 			{
@@ -160,20 +189,53 @@ namespace PDNBulkUpdater
 				dlg.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
 				dlg.ShowNewFolderButton = false;
 
-				if(dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-				{
-					FileSystemDirectory dir = new FileSystemDirectory(dlg.SelectedPath, m_ctx.FileTypes);
-
-					if(!m_ctx.Files.Contains(dir))
-					{
-						m_ctx.Files.Add(dir);
-						m_viewItems.Items.Add(dir);
-					}
-				}
+                if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    AddFilesToViewItemsList(dlg.SelectedPath);
 			}
 		}
 
-		private void OnViewItems_KeyDown(object sender, KeyEventArgs e)
+        private void OnViewItems_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effects = DragDropEffects.None;
+
+            // If the DataObject contains string data, extract it.
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] fileNames = e.Data.GetData(DataFormats.FileDrop) as string[];
+                if (fileNames != null)
+                {
+                    bool foundValidFile = false;
+                    foreach (string fileName in fileNames)
+                    {
+                        foundValidFile = foundValidFile || IsValidFileType(fileName, m_ctx.FileTypes);
+                        if (foundValidFile == true)
+                            break;
+                    }
+
+                    if (foundValidFile == true)
+                        e.Effects = DragDropEffects.Copy;
+                }
+            }
+
+            e.Handled = true;
+        }
+
+        private void OnViewItems_Drop(object sender, DragEventArgs e)
+        {
+            // If the DataObject contains string data, extract it.
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] fileNames = e.Data.GetData(DataFormats.FileDrop) as string[];
+                if (fileNames != null)
+                {
+                    AddFilesToViewItemsList(fileNames);
+                    e.Effects = DragDropEffects.Copy;
+                }
+            }
+            e.Handled = true;
+        }
+
+        private void OnViewItems_KeyDown(object sender, KeyEventArgs e)
 		{
 			if(e.Key == Key.Delete)
 			{
@@ -254,5 +316,5 @@ namespace PDNBulkUpdater
 		{
 			m_ctx.OutputFileType = e.AddedItems[0] as PaintDotNet.FileType;
 		}
-	}
+    }
 }
