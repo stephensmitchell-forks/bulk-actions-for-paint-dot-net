@@ -20,7 +20,7 @@
 		</StackPanel>
 		<Grid Style="{StaticResource PageInfoGrid}">
 			<TextBlock Style="{StaticResource PageInfo}">
-				Version 0.1<LineBreak/>
+				Version 0.2<LineBreak/>
 				<LineBreak/>
 				Welcome to the Bulk Actions for Paint .NET.
                 <LineBreak/>
