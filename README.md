@@ -20,4 +20,5 @@ Current options:
   `C:\Program Files\paint.net\Effects`
 - Restart Paint.NET
 
-After restarting Paint.NET a new menu item `Bulk Actions...` will appear in the bottom of the `Edit` menu.
+After restarting Paint.NET a new menu item `Bulk Actions...` will appear in the bottom of the `Edit` menu:
+<img alt="Paint.NET menu with Bulk Actions plugin" src="https://github.com/sagishporer/bulk-actions-for-paint-dot-net/blob/master/menu_bulk_actions.png" />
