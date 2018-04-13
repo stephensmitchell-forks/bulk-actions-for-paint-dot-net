@@ -39,6 +39,7 @@ namespace PDNBulkUpdater
 			}
 
 			m_comboFileType.SelectedIndex = 0;
+            ButtonNext.IsEnabled = false;
 		}
 
 		private void OnNextButton_Click(object sender, RoutedEventArgs e)
@@ -162,6 +163,16 @@ namespace PDNBulkUpdater
                 m_ctx.Files.Add(file);
                 m_viewItems.Items.Add(file);
             }
+
+            SelectedFilesUpdated();
+        }
+
+        private void SelectedFilesUpdated()
+        {
+            if (m_ctx.Files.Count > 0)
+                ButtonNext.IsEnabled = true;
+            else
+                ButtonNext.IsEnabled = false;
         }
 
         private static bool IsValidFileType(string path, FileTypeCollection validFilesTypes)
@@ -253,6 +264,8 @@ namespace PDNBulkUpdater
 					m_viewItems.SelectedIndex = Math.Min(selectedIndex, m_viewItems.Items.Count - 1);
 				}
 
+                SelectedFilesUpdated();
+
 				e.Handled = true;
 			}
 		}
@@ -261,6 +274,8 @@ namespace PDNBulkUpdater
 		{
 			m_ctx.Files.Clear();
 			m_viewItems.Items.Clear();
+
+            SelectedFilesUpdated();
 		}
 
 		private void OnPath_ToolTipOpening(object sender, ToolTipEventArgs e)

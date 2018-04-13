@@ -17,7 +17,7 @@
 		</Border>
 		<StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
 			<Button Width="50" Margin="10,10,0,10" Click="OnBackButton_Click" TabIndex="1">Back</Button>
-			<Button Width="50" Click="OnNextButton_Click" Margin="10" TabIndex="0" IsDefault="True">Next</Button>
+			<Button x:Name="ButtonNext" Width="50" Click="OnNextButton_Click" Margin="10" TabIndex="0" IsDefault="True">Next</Button>
 		</StackPanel>
 		<Grid Margin="10,0,10,0">
 			<Grid.RowDefinitions>
