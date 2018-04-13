@@ -19,8 +19,8 @@
             <Button Width="50" Click="OnNextButton_Click" Margin="10" TabIndex="0" IsDefault="True">Next</Button>
 		</StackPanel>
 		<Grid Style="{StaticResource PageInfoGrid}">
-			<TextBlock Style="{StaticResource PageInfo}">
-				Version 0.2<LineBreak/>
+            <TextBlock x:Name="TextBlockDescription" Style="{StaticResource PageInfo}">
+				Version [VERSION]<LineBreak />
 				<LineBreak/>
 				Welcome to the Bulk Actions for Paint .NET.
                 <LineBreak/>

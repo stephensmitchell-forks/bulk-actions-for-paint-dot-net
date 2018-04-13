@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Reflection;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
@@ -12,7 +13,10 @@ namespace PDNBulkUpdater
 		public IntroPage()
 		{
 			InitializeComponent();
-		}
+
+            string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            TextBlockDescription.Text = TextBlockDescription.Text.Replace("[VERSION]", version);
+        }
 
 		private void OnNextButton_Click(object sender, RoutedEventArgs e)
 		{
