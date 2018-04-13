@@ -104,7 +104,8 @@ namespace PDNBulkUpdater
 				if(dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 				{
 					m_txtOutputDir.Text = dlg.SelectedPath;
-				}
+                    m_ctx.OutputDirectory = dlg.SelectedPath;
+                }
 			}
 		}
 
