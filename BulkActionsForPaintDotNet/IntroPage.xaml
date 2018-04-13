@@ -20,8 +20,11 @@
 		</StackPanel>
 		<Grid Style="{StaticResource PageInfoGrid}">
             <TextBlock x:Name="TextBlockDescription" Style="{StaticResource PageInfo}">
-				Version [VERSION]<LineBreak />
-				<LineBreak/>
+				Version [VERSION]
+            </TextBlock>
+            <TextBlock Style="{StaticResource PageInfo}">
+                <LineBreak/>
+                <LineBreak/>
 				Welcome to the Bulk Actions for Paint .NET.
                 <LineBreak/>
                 <LineBreak/>
