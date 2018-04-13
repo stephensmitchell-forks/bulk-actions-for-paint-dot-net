@@ -161,7 +161,11 @@ namespace PDNBulkUpdater
 			{
 				using(PaintDotNet.Surface scratchSurface = new PaintDotNet.Surface(newDoc.Width, newDoc.Height))
 				{
-					destFileType.Save(newDoc, file, token, scratchSurface, null, false);
+                    PaintDotNet.ProgressEventHandler progressEventHandler = delegate (object sender, PaintDotNet.ProgressEventArgs e)
+                    {
+                        // Nothing to do
+                    };
+                    destFileType.Save(newDoc, file, token, scratchSurface, progressEventHandler, false);
 				}
 			}
 
