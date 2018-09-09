@@ -50,8 +50,8 @@ namespace PDNBulkUpdater
 
 									if(menu != null)
 									{
-                                        // "Edit" drop down menu
-										System.Windows.Forms.ToolStripMenuItem fileItem = menu.Items[1] as System.Windows.Forms.ToolStripMenuItem;
+                                        // "Effects" drop down menu
+										System.Windows.Forms.ToolStripMenuItem fileItem = menu.Items[6] as System.Windows.Forms.ToolStripMenuItem;
 										fileItem.DropDownOpening += new EventHandler(fileItem_DropDownOpening);
 									}
 								}
