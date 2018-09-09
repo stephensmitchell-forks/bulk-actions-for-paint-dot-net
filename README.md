@@ -6,7 +6,7 @@ Plug-in for performing bulk (batch) actions on images.
 Bulk Actions plugin for Paint.NET is a fork from Paint.NET Bulk Image Processor by Keith Newton. The original work can be found here:
 https://pdnbulkupdater.codeplex.com/
 
-The purpose of this fork is to make this plugin work with Paint.NET 4+
+The purpose of this fork is to make this plugin work with Paint.NET 4.1+
 
 ## Bulk actions
 Current options:
@@ -20,5 +20,5 @@ Current options:
   `C:\Program Files\paint.net\Effects`
 - Restart Paint.NET
 
-After restarting Paint.NET a new menu item `Bulk Actions...` will appear in the bottom of the `Edit` menu:
+After restarting Paint.NET a new menu item `Bulk Actions...` will appear in the bottom of the `Effects` menu:
 <img alt="Paint.NET menu with Bulk Actions plugin" src="https://github.com/sagishporer/bulk-actions-for-paint-dot-net/blob/master/menu_bulk_actions.png" />
