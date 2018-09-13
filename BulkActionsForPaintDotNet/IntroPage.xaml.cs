@@ -16,7 +16,7 @@ namespace PDNBulkUpdater
 
             string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
             // Trim un-required sub-version data
-            while (version.EndsWith(".0"))
+            while (version.EndsWith(".0") && version.Length > 3)
                 version = version.Substring(0, version.Length - 2);
             TextBlockDescription.Text = TextBlockDescription.Text.Replace("[VERSION]", version);
         }
