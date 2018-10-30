@@ -49,8 +49,10 @@ namespace PDNBulkUpdater
 									{
                                         // "Effects" drop down menu
 										System.Windows.Forms.ToolStripMenuItem fileItem = menu.Items[6] as System.Windows.Forms.ToolStripMenuItem;
-										fileItem.DropDownOpening += new EventHandler(fileItem_DropDownOpening);
-									}
+                                        //fileItem.DropDownOpening += new EventHandler(fileItem_DropDownOpening);
+                                        fileItem_DropDownOpening(fileItem, null);
+
+                                    }
 								}
 							}
 						}
@@ -87,8 +89,8 @@ namespace PDNBulkUpdater
 					menuItem.Text = MENU_TXT;
 					menuItem.Click += new EventHandler(OnBulkConvertClick);
 
-                    fileItem.DropDownItems.Insert(fileItem.DropDownItems.Count, new System.Windows.Forms.ToolStripSeparator());
                     fileItem.DropDownItems.Insert(fileItem.DropDownItems.Count, menuItem);
+                    fileItem.DropDownItems.Insert(fileItem.DropDownItems.Count, new System.Windows.Forms.ToolStripSeparator());
 				}
 			}
 			catch(Exception ex)
